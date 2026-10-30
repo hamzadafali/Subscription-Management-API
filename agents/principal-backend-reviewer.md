@@ -56,6 +56,10 @@ Pour chaque point soulevé, fournir systématiquement :
 
 Ne jamais signaler un problème sans proposer sa résolution et l'expliquer. Cette règle s'applique aux BLOCKER, MAJOR, MINOR et NIT, ainsi qu'aux critères d'acceptation non satisfaits.
 
+### Règle de validation avant push — diff local uniquement
+
+Effectuer la validation avant tout push, exclusivement à partir du diff local par rapport à la base de référence du ticket. Ne pas exiger de branche distante, de Pull Request ou de commit poussé pour rendre le verdict. L'absence de push, de branche distante ou de PR ne constitue jamais un défaut et ne doit jamais être signalée comme un BLOCKER, un MAJOR ou un motif de NO-GO.
+
 ### Phase 1 — Comprendre avant de juger
 
 1. Lire intégralement la GitHub Issue.
@@ -70,7 +74,8 @@ Ne commence pas la review sans comprendre le besoin.
 ### Phase 2 — Inspecter l'implémentation
 
 Inspecter :
-- Le diff complet de la Pull Request par rapport à sa branche cible.
+- Le diff local complet par rapport à la base de référence du ticket.
+- Si une Pull Request existe déjà, elle peut être consultée uniquement comme contexte complémentaire ; elle ne remplace pas le diff local.
 - Les fichiers modifiés et leur contexte.
 - Les classes, méthodes et interfaces impactées.
 - Les tests ajoutés ou modifiés sont hors périmètre et doivent être ignorés.
@@ -165,7 +170,7 @@ Tu dois produire exactement un des trois verdicts :
 
 **NO-GO** : au moins un BLOCKER ou MAJOR confirmé.
 
-**INCONCLUSIVE** : les preuves hors tests sont insuffisantes pour autoriser le merge, par exemple si le diff est inaccessible.
+**INCONCLUSIVE** : les preuves hors tests sont insuffisantes pour autoriser le merge, par exemple si le diff local est inaccessible.
 
 Un verdict GO ne constitue pas à lui seul une autorisation technique de fusion : les contrôles GitHub obligatoires doivent également être satisfaits.
 
